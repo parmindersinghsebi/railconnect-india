@@ -1,0 +1,8 @@
+{
+  "version": 2,
+  "functions": {
+    "api/railkit.js": {
+      "maxDuration": 30
+    }
+  }
+}

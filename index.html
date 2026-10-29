@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b1f33">
+<title>RailConnect India | Indian Railways Enquiry</title>
+<style>
+:root{--navy:#0b1f33;--navy2:#123452;--blue:#1769aa;--gold:#f5b82e;--bg:#f3f6fa;--card:#fff;--text:#172536;--muted:#64748b;--line:#dce4ed;--green:#138a58;--red:#c24141}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+header{background:linear-gradient(125deg,var(--navy),var(--navy2));color:white;padding:22px max(18px,calc((100% - 1200px)/2));border-bottom:4px solid var(--gold)}
+.brand{display:flex;align-items:center;gap:12px}.logo{width:46px;height:46px;border-radius:13px;background:var(--gold);color:var(--navy);display:grid;place-items:center;font-size:25px;font-weight:900}.brand h1{font-size:22px;margin:0}.brand p{margin:4px 0 0;color:#d4e1ef;font-size:13px}
+.wrap{max-width:1200px;margin:0 auto;padding:22px 18px 50px}.hero{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:20px}.hero h2{margin:0 0 7px;font-size:clamp(23px,4vw,32px)}.hero p{margin:0;color:var(--muted);max-width:700px;line-height:1.5}.pill{font-size:12px;font-weight:800;color:#7a5300;background:#fff1c5;padding:8px 12px;border-radius:99px;white-space:nowrap}
+.layout{display:grid;grid-template-columns:250px minmax(0,1fr);gap:20px;align-items:start}.sidebar,.panel,.result{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:0 5px 20px #0b1f3308}.sidebar{padding:12px;position:sticky;top:12px}.navlabel{font-size:11px;color:var(--muted);font-weight:800;letter-spacing:1px;padding:12px 10px 6px}.navbtn{width:100%;display:flex;gap:10px;align-items:center;text-align:left;border:0;background:transparent;padding:11px 10px;border-radius:10px;color:#34465b;font-weight:650;cursor:pointer;font-size:13px}.navbtn:hover{background:#f1f5f9}.navbtn.active{background:#e7f1fb;color:#075ca1}.navbtn span:first-child{width:22px;text-align:center;font-size:17px}.content{min-width:0}.panel{padding:22px}.panel h3{margin:0 0 6px;font-size:21px}.desc{margin:0 0 20px;color:var(--muted);font-size:14px;line-height:1.5}.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}label{font-size:12px;font-weight:800;color:#34465b}input,select{width:100%;min-width:0;padding:12px 13px;border:1px solid #cbd5e1;border-radius:9px;font:inherit;font-size:14px;background:#fff;color:var(--text);outline:none}input:focus,select:focus{border-color:var(--blue);box-shadow:0 0 0 3px #1769aa19}.hint{font-size:11px;color:var(--muted);line-height:1.4}.submit{margin-top:18px;border:0;border-radius:10px;background:var(--blue);color:white;font-weight:800;padding:13px 18px;cursor:pointer;min-width:150px}.submit:hover{background:#0e578f}.submit:disabled{opacity:.55;cursor:wait}.result{margin-top:18px;overflow:hidden}.resulthead{padding:14px 18px;background:#f8fafc;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:12px}.resulthead h4{margin:0;font-size:14px}.resultbody{padding:18px;overflow:auto}.status{font-size:12px;font-weight:800;color:var(--muted)}.status.ok{color:var(--green)}.status.bad{color:var(--red)}pre{white-space:pre-wrap;overflow-wrap:anywhere;margin:0;font-size:12px;line-height:1.6;color:#d8e6f5;background:#101f30;padding:16px;border-radius:10px;max-height:560px;overflow:auto}.empty{color:var(--muted);font-size:13px;line-height:1.6}.result-actions{display:flex;gap:8px}.smallbtn{border:1px solid var(--line);background:white;padding:7px 10px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer}.notice{margin-top:18px;background:#fff8e6;border:1px solid #f4dfa4;border-radius:12px;padding:13px 15px;color:#72551b;font-size:12px;line-height:1.6}.footer{text-align:center;color:var(--muted);font-size:12px;margin-top:24px}.mobilemenu{display:none}.welcomegrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:18px}.metric{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px}.metric strong{display:block;font-size:20px;margin-bottom:4px}.metric span{font-size:12px;color:var(--muted)}
+
+/* Responsive layout: desktop, tablet and small phones */
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{min-width:320px;overflow-x:hidden}
+button,input,select{touch-action:manipulation}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #80bfff;outline-offset:2px}
+@media (max-width: 1024px){
+  .wrap{padding:20px 16px 38px}
+  .layout{grid-template-columns:220px minmax(0,1fr);gap:14px}
+  .panel{padding:18px}
+  .welcomegrid{gap:10px}
+  .metric{padding:13px}
+  .metric strong{font-size:18px}
+}
+@media (max-width: 800px){
+  header{padding:18px 16px}
+  .layout{grid-template-columns:minmax(0,1fr)}
+  .sidebar{position:static;display:none;max-height:55vh;overflow-y:auto}
+  .sidebar.open{display:block}
+  .mobilemenu{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);padding:11px 14px;border-radius:9px;font-weight:700;margin-bottom:12px;cursor:pointer;min-height:44px}
+  .navbtn{min-height:44px}
+  .hero{align-items:flex-start;flex-direction:column;gap:12px}
+  .fields{grid-template-columns:minmax(0,1fr)}
+  .field.full{grid-column:auto}
+  .welcomegrid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .panel{padding:17px}
+  .pill{white-space:normal}
+  .resulthead{padding:12px 14px;flex-wrap:wrap}
+  .resultbody{padding:14px}
+}
+@media (max-width: 560px){
+  .wrap{padding:16px 12px 30px}
+  header{padding:16px 12px}
+  .brand{gap:10px}
+  .logo{width:40px;height:40px;border-radius:11px;font-size:22px;flex-shrink:0}
+  .brand h1{font-size:19px}
+  .brand p{font-size:11px;line-height:1.35}
+  .hero h2{font-size:25px;line-height:1.2}
+  .hero p{font-size:13px}
+  .welcomegrid{grid-template-columns:1fr;gap:8px}
+  .metric{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px}
+  .metric strong{font-size:16px;margin:0}
+  .metric span{text-align:right}
+  .panel{padding:15px;border-radius:13px}
+  .panel h3{font-size:19px}
+  .desc{font-size:13px;margin-bottom:16px}
+  input,select{font-size:16px;padding:12px;min-height:46px}
+  .submit{width:100%;min-height:46px}
+  .result{border-radius:13px}
+  .resulthead{align-items:flex-start;gap:8px}
+  .result-actions{width:100%;justify-content:space-between;align-items:center}
+  pre{font-size:11px;padding:12px;max-height:420px}
+  .notice{font-size:11px}
+  .footer{line-height:1.5;padding:0 8px}
+}
+@media (max-width: 360px){
+  .brand h1{font-size:17px}
+  .brand p{font-size:10px}
+  .hero h2{font-size:22px}
+  .resulthead h4{font-size:13px}
+  .smallbtn{padding:7px 8px}
+}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+</style>
+</head>
+<body>
+<header><div class="brand"><div class="logo">🚆</div><div><h1>RailConnect India</h1><p>Indian Railways • Journey information in one place</p></div></div></header>
+<main class="wrap">
+  <section class="hero"><div><h2>Railway Enquiry Dashboard</h2><p>Check train running status, PNR, schedules, station boards, routes, fares and availability using RailKit API.</p></div><div class="pill">RAILKIT API INTEGRATION</div></section>
+  <div class="welcomegrid">
+    <div class="metric"><strong>15+</strong><span>Railway enquiry tools</span></div>
+    <div class="metric"><strong>Mobile-ready</strong><span>Responsive interface</span></div>
+    <div class="metric"><strong>Protected</strong><span>API key stays server-side</span></div>
+  </div>
+  <button class="mobilemenu" id="mobileMenu">☰ Enquiry menu</button>
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="navlabel">JOURNEY</div>
+      <button class="navbtn active" data-action="live"><span>📍</span><span>Live Train Status</span></button>
+      <button class="navbtn" data-action="pnr"><span>🎫</span><span>PNR Status</span></button>
+      <button class="navbtn" data-action="between"><span>↔️</span><span>Trains Between Stations</span></button>
+      <button class="navbtn" data-action="availability"><span>💺</span><span>Seat Availability</span></button>
+      <button class="navbtn" data-action="fare"><span>₹</span><span>Fare Enquiry</span></button>
+      <div class="navlabel">TRAIN INFORMATION</div>
+      <button class="navbtn" data-action="trainInfo"><span>🚆</span><span>Train Information / Route</span></button>
+      <button class="navbtn" data-action="trainNumber"><span>🔢</span><span>Search by Train Number</span></button>
+      <button class="navbtn" data-action="trainName"><span>🔎</span><span>Search by Train Name</span></button>
+      <button class="navbtn" data-action="history"><span>🕘</span><span>Train History</span></button>
+      <button class="navbtn" data-action="cancelled"><span>⚠️</span><span>Cancelled Trains</span></button>
+      <div class="navlabel">STATION INFORMATION</div>
+      <button class="navbtn" data-action="stationLive"><span>🚉</span><span>Live Station Board</span></button>
+      <button class="navbtn" data-action="stationCode"><span>📌</span><span>Station Details by Code</span></button>
+      <button class="navbtn" data-action="stationSearch"><span>🔍</span><span>Search Station by Name</span></button>
+      <button class="navbtn" data-action="amenities"><span>🛗</span><span>Station Amenities</span></button>
+      <button class="navbtn" data-action="timetable"><span>🗓️</span><span>Station Timetable</span></button>
+    </aside>
+    <section class="content">
+      <div class="panel">
+        <h3 id="formTitle">Live Train Status</h3>
+        <p class="desc" id="formDesc">Check a train's latest reported movement, delays and station timeline.</p>
+        <form id="apiForm"><div class="fields" id="fields"></div><button class="submit" id="submitBtn" type="submit">Search Railway Data</button></form>
+      </div>
+      <div class="result" id="resultPanel">
+        <div class="resulthead"><h4>API Response</h4><div class="result-actions"><span class="status" id="resultStatus">Waiting for search</span><button class="smallbtn" id="copyBtn" type="button">Copy JSON</button></div></div>
+        <div class="resultbody"><div class="empty" id="resultEmpty">Choose a railway service from the menu and submit the form. Your result will appear here.</div><pre id="resultJson" hidden></pre></div>
+      </div>
+      <div class="notice"><strong>Important:</strong> This website needs a valid RailKit API key and an active plan for the selected endpoint. Data freshness and request limits depend on RailKit. Live train location is an estimate from the provider, not GPS. Verify critical travel information with official railway sources.</div>
+    </section>
+  </div>
+  <div class="footer">RailConnect India • Independent third-party interface • Not an official Indian Railways website</div>
+</main>
+<script>
+const today = new Date();
+const dateDMY = `${String(today.getDate()).padStart(2,'0')}-${String(today.getMonth()+1).padStart(2,'0')}-${today.getFullYear()}`;
+const config = {
+ live:{title:'Live Train Status',desc:'Enter the five-digit train number and journey start date (today or up to five days earlier).',fields:[['trainNo','Train number','text','12301','Five digits'],['date','Journey start date','text',dateDMY,'DD-MM-YYYY']],action:'live'},
+ pnr:{title:'PNR Status',desc:'Retrieve booking and current passenger status for a 10-digit PNR.',fields:[['pnr','10-digit PNR','text','','Enter PNR number']],action:'pnr'},
+ between:{title:'Trains Between Stations',desc:'Find direct trains between two station codes. Add a date if you want date-specific results.',fields:[['from','From station code','text','NDLS','Example: NDLS'],['to','To station code','text','BCT','Example: BCT'],['date','Journey date (optional)','text',dateDMY,'DD-MM-YYYY']],action:'between'},
+ availability:{title:'Seat Availability',desc:'Check class/quota availability and fare information for a train.',fields:[['trainNo','Train number','text','','Five-digit train number'],['from','From station code','text','','e.g. NDLS'],['to','To station code','text','','e.g. BCT'],['date','Journey date','text',dateDMY,'DD-MM-YYYY'],['coach','Travel class','select','SL','', ['SL','3A','2A','1A','CC','EC','2S']],['quota','Quota','select','GN','',['GN','TQ','LD','SS']]],action:'availability'},
+ fare:{title:'Fare Enquiry',desc:'Retrieve fare breakdown for a train, route, travel class and quota.',fields:[['trainNo','Train number','text','','Five-digit train number'],['from','From station code','text','','e.g. NDLS'],['to','To station code','text','','e.g. BCT'],['date','Journey date','text',dateDMY,'DD-MM-YYYY'],['travelClass','Travel class','select','3A','',['SL','3A','2A','1A','CC','EC','2S']],['quota','Quota','select','GN','',['GN','TQ','LD','SS']]],action:'fare'},
+ trainInfo:{title:'Train Information / Route',desc:'Get train details, route and stoppage information.',fields:[['trainNo','Train number','text','','Enter train number']],action:'trainInfo'},
+ trainNumber:{title:'Search by Train Number',desc:'Search the RailKit train directory using a train number or number prefix.',fields:[['query','Train number or prefix','text','','e.g. 129']],action:'trainNumber'},
+ trainName:{title:'Search by Train Name',desc:'Search for trains by name or a partial name.',fields:[['name','Train name','text','','e.g. Rajdhani']],action:'trainName'},
+ history:{title:'Train History',desc:'Retrieve historical running details for a train on a journey date.',fields:[['trainNo','Train number','text','','Enter train number'],['date','Journey date','text',dateDMY,'DD-MM-YYYY']],action:'history'},
+ cancelled:{title:'Cancelled Trains',desc:'Retrieve the provider’s current cancelled-train list.',fields:[],action:'cancelled'},
+ stationLive:{title:'Live Station Board',desc:'See trains arriving/departing at a station in the next 2, 4 or 8 hours.',fields:[['stationCode','Station code','text','NDLS','e.g. NDLS'],['hours','Time window','select','2','Hours ahead',['2','4','8']]],action:'stationLive'},
+ stationCode:{title:'Station Details by Code',desc:'Look up a station using its station code.',fields:[['stationCode','Station code','text','','e.g. NDLS']],action:'stationCode'},
+ stationSearch:{title:'Search Station by Name',desc:'Find stations matching a name or partial name.',fields:[['name','Station name','text','','e.g. Jaipur']],action:'stationSearch'},
+ amenities:{title:'Station Amenities',desc:'Look up station facilities and amenities where supported by the provider.',fields:[['stationCode','Station code','text','','e.g. NDLS']],action:'amenities'},
+ timetable:{title:'Station Timetable',desc:'Get the timetable of trains passing through a station. Date is optional.',fields:[['stationCode','Station code','text','','e.g. NDLS'],['date','Date (optional)','text',dateDMY,'DD-MM-YYYY']],action:'timetable'}
+};
+let active = 'live';
+const fieldsEl=document.getElementById('fields'), titleEl=document.getElementById('formTitle'), descEl=document.getElementById('formDesc');
+function renderForm(key){
+ active=key; const c=config[key]; titleEl.textContent=c.title; descEl.textContent=c.desc; fieldsEl.innerHTML='';
+ document.querySelectorAll('.navbtn').forEach(b=>b.classList.toggle('active',b.dataset.action===key));
+ c.fields.forEach(f=>{
+  const [id,label,type,def,hint,options]=f; const wrap=document.createElement('div');wrap.className='field';
+  const lab=document.createElement('label');lab.htmlFor=id;lab.textContent=label;wrap.appendChild(lab);
+  let input;
+  if(type==='select'){input=document.createElement('select');(options||[]).forEach(o=>{let op=document.createElement('option');op.value=o;op.textContent=o;input.appendChild(op)});input.value=def;}
+  else {input=document.createElement('input');input.type=type;input.placeholder=hint||'';input.value=def||'';if(!id.includes('date')&&id!=='date') input.autocomplete='off';}
+  input.name=id;input.id=id;input.required=!label.includes('(optional)');wrap.appendChild(input);
+  if(hint && type!=='select'){const small=document.createElement('div');small.className='hint';small.textContent=hint;wrap.appendChild(small)}
+  fieldsEl.appendChild(wrap);
+ });
+ document.getElementById('submitBtn').textContent=c.fields.length?'Search Railway Data':'Load Cancelled Trains';
+ document.getElementById('sidebar').classList.remove('open');
+}
+document.querySelectorAll('.navbtn').forEach(b=>b.addEventListener('click',()=>renderForm(b.dataset.action)));
+document.getElementById('mobileMenu').addEventListener('click',()=>document.getElementById('sidebar').classList.toggle('open'));
+function showResult(data, ok){
+ const pre=document.getElementById('resultJson'), empty=document.getElementById('resultEmpty'), status=document.getElementById('resultStatus');
+ pre.hidden=false;empty.hidden=true;pre.textContent=JSON.stringify(data,null,2);
+ status.textContent=ok?'Response received':'Request failed';status.className='status '+(ok?'ok':'bad');
+}
+document.getElementById('apiForm').addEventListener('submit',async e=>{
+ e.preventDefault();const btn=document.getElementById('submitBtn');btn.disabled=true;btn.textContent='Fetching data…';
+ const params={};new FormData(e.currentTarget).forEach((v,k)=>{if(String(v).trim())params[k]=String(v).trim()});
+ try{
+  const response=await fetch('/api/railkit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:active,params})});
+  const data=await response.json();showResult(data,response.ok && data.success!==false);
+ }catch(err){showResult({success:false,error:'Could not reach the website API. Check deployment and try again.',details:String(err)},false)}
+ finally{btn.disabled=false;btn.textContent=config[active].fields.length?'Search Railway Data':'Load Cancelled Trains'}
+});
+document.getElementById('copyBtn').addEventListener('click',async()=>{
+ const pre=document.getElementById('resultJson');if(pre.hidden)return;
+ try{await navigator.clipboard.writeText(pre.textContent);document.getElementById('resultStatus').textContent='JSON copied';}catch(e){document.getElementById('resultStatus').textContent='Copy unavailable';}
+});
+renderForm('live');
+</script>
+</body>
+</html>
